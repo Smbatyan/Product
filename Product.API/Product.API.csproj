@@ -8,15 +8,14 @@
     <ItemGroup>
         <PackageReference Include="FastEndpoints" Version="5.8.1" />
         <PackageReference Include="FastEndpoints.Swagger" Version="5.8.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Contracts\Request" />
-      <Folder Include="Endpoints\Summaries" />
-      <Folder Include="Endpoints\Validations" />
+      <Folder Include="Endpoints\Product\Summaries" />
+      <Folder Include="Endpoints\Product\Validations" />
       <Folder Include="Infrastructure" />
       <Folder Include="Repositories" />
-      <Folder Include="Services" />
     </ItemGroup>
 
 </Project>
