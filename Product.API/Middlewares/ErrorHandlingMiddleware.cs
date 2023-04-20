@@ -3,16 +3,16 @@ using Product.API.Extensions;
 
 namespace Product.API.Middlewares;
 
-internal abstract class ErrorHandlerMiddleware
+public class ErrorHandlerMiddleware
 {
     private readonly RequestDelegate _next;
 
-    internal ErrorHandlerMiddleware(RequestDelegate next)
+    public ErrorHandlerMiddleware(RequestDelegate next)
     {
         _next = next;
     }
 
-    internal async Task InvokeAsync(HttpContext httpContext)
+    public async Task InvokeAsync(HttpContext httpContext)
     {
         try
         {
