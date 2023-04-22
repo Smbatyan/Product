@@ -56,4 +56,9 @@ public class ProductRepository
     {
         await _context.SaveChangesAsync();
     }
+
+    public async Task<ProductEntity> GetProductByNameAsync(string name)
+    {
+        return await _context.Products.FirstOrDefaultAsync(p => p.Name == name);
+    }
 }   
