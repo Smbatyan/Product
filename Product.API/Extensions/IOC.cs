@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Product.API.Helpers;
+using Product.API.Infrastructure.Context;
 using Product.API.Services;
 using Product.API.Settings;
 
@@ -20,6 +22,14 @@ public static class IOC
     public static IServiceCollection AddHelpers(this IServiceCollection services)
     {
         services.AddSingleton<SecurityHelper>();
+        return services;
+    }
+
+    public static IServiceCollection AddSqlite(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddDbContext<ProductDbContext>(options => options
+            .UseSqlite(configuration.GetConnectionString("DefaultConnection")));
         return services;
     }
 
