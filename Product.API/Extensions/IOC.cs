@@ -1,6 +1,9 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Product.API.Helpers;
 using Product.API.Infrastructure.Context;
+using Product.API.Mappers;
+using Product.API.Repositories;
 using Product.API.Services;
 using Product.API.Settings;
 
@@ -11,11 +14,13 @@ public static class IOC
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddScoped<AuthService>();
+        services.AddScoped<ProductService>();
         return services;
     }
 
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
+        services.AddScoped<ProductRepository>();
         return services;
     }
 
@@ -37,6 +42,21 @@ public static class IOC
         IConfiguration configuration)
     {
         services.Configure<JwtSettings>(configuration.GetSection("Jwt"));
+        return services;
+    }
+    
+    public static IServiceCollection AddAutomapper(this IServiceCollection services)
+    {
+        services.AddAutoMapper(typeof(IOC));
+
+        MapperConfiguration mapperConfig = new(mc =>
+        {
+            mc.AddProfile(new ProductProfile());
+        });
+
+        IMapper mapper = mapperConfig.CreateMapper();
+        services.AddSingleton(mapper);
+
         return services;
     }
 }

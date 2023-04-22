@@ -6,6 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+<!--        <PackageReference Include="AutoMapper" Version="12.0.1" />-->
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
         <PackageReference Include="FastEndpoints" Version="5.8.1" />
         <PackageReference Include="FastEndpoints.Swagger" Version="5.8.1" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
@@ -14,13 +16,6 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Endpoints\Product" />
-      <Folder Include="Repositories" />
-      <Folder Include="Summaries" />
-      <Folder Include="Validations" />
     </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@ public class ProductDbContext : DbContext
 {
     public DbSet<ProductEntity> Products { get; set; }
 
-    public ProductDbContext() : base()
+    public ProductDbContext()
     {
     }
 
