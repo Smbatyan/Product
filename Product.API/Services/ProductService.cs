@@ -52,5 +52,23 @@ namespace Product.API.Services
 
             return _mapper.Map<ProductResponse>(product);
         }
+
+        public async Task<ProductResponse> UpdateProductAsync(UpdateProductRequest req)
+        {
+            ProductEntity product = await _productRepository.GetProductAsync(req.Id);
+            if (product is null)
+            {
+                throw new ResourceNotFoundException("Product not found");
+            }
+
+            product.Name = req.Name;
+            product.Available = req.Available;
+            product.Price = req.Price;
+            product.Description = req.Description;
+
+            await _productRepository.SaveChangesAsync();
+
+            return _mapper.Map<ProductResponse>(product);
+        }
     }
 }
