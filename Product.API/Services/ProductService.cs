@@ -1,4 +1,5 @@
 using AutoMapper;
+using Product.API.Contracts.Request.Product;
 using Product.API.Contracts.Response;
 using Product.API.Entities;
 using Product.API.Exceptions;
@@ -32,7 +33,23 @@ namespace Product.API.Services
             {
                 throw new ResourceNotFoundException("Product not found");
             }
-            
+
+            return _mapper.Map<ProductResponse>(product);
+        }
+
+        public async Task<ProductResponse> CreateProductAsync(CreateProductRequest req)
+        {
+            ProductEntity productEntity = await _productRepository.GetProductByNameAsync(req.Name);
+            if (productEntity is not null)
+            {
+                throw new ResourceAlreadyExistsException("Product already exists");
+            }
+
+            ProductEntity product = _mapper.Map<ProductEntity>(req);
+
+            await _productRepository.CreateProductAsync(product);
+            await _productRepository.SaveChangesAsync();
+
             return _mapper.Map<ProductResponse>(product);
         }
     }
