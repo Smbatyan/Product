@@ -1,4 +1,3 @@
-using System.Net;
 using Product.API.Extensions;
 
 namespace Product.API.Middlewares;

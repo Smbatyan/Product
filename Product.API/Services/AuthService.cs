@@ -1,8 +1,6 @@
-using Microsoft.Extensions.Options;
 using Product.API.Contracts.Request.Auth;
 using Product.API.Exceptions;
 using Product.API.Helpers;
-using Product.API.Settings;
 
 namespace Product.API.Services;
 

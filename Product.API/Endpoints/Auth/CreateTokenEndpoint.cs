@@ -5,7 +5,7 @@ using Product.API.Services;
 
 namespace Product.API.Endpoints.Auth;
 
-[FastEndpoints.HttpPost("security/createToken"), AllowAnonymous]
+[HttpPost("security/createToken"), AllowAnonymous]
 public class CreateTokenEndpoint : Endpoint<CreateTokenRequest, string>
 {
     private readonly AuthService _authService;

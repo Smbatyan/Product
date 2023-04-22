@@ -1,8 +1,7 @@
 using FastEndpoints;
 using FastEndpoints.Swagger;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Product.API.Extensions;
-using Product.API.Infrastructure.Context;
 using Product.API.Middlewares;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -16,6 +15,7 @@ builder.Services.AddServices();
 builder.Services.AddRepositories();
 builder.Services.AddHelpers();
 builder.Services.AddSqlite(builder.Configuration);
+builder.Services.AddAutomapper();
 
 builder.Services.AddConfigurationSettings(builder.Configuration);
 
